@@ -6,27 +6,27 @@ The script begins by importing the necessary libraries and defining some helper 
 
 The main function, srfmat3, takes an image as input and performs the following steps:
 
-1.Line fitting: The image is first processed using the deriv1 function to get the first derivative of the image. The find_centroid function is then used to find the centroid of the image, and the fit_line function is used to fit a line to the centroid. The angle of the line is then computed using the compute_angle function.
+ 1. **Line fitting:**  The image is first processed using the deriv1 function to get the first derivative of the image. The find_centroid function is then used to find the centroid of the image, and the fit_line function is used to fit a line to the centroid. The angle of the line is then computed using the compute_angle function.
 
 
-2.Edge Spread Function (ESF) computation: The ESF is computed using the compute_esf function, which takes the image and the line obtained in the previous step as inputs.
+2. **Edge Spread Function (ESF) computation:** The ESF is computed using the compute_esf function, which takes the image and the line obtained in the previous step as inputs.
 
 
-3.Line Spread Function (LSF) computation: The LSF is computed using the get_lsf function, which takes the ESF as input.
+3. **Line Spread Function (LSF) computation:** The LSF is computed using the get_lsf function, which takes the ESF as input.
 
 
-4.MTF computation: The MTF is computed using the get_mtf function, which takes the recentered LSF and the line obtained in the first step as inputs.
+4. **MTF computation:** The MTF is computed using the get_mtf function, which takes the recentered LSF and the line obtained in the first step as inputs.
 
 
-5.Plotting: The MTF is plotted as a function of spatial frequency using matplotlib.
+5. **Plotting:** The MTF is plotted as a function of spatial frequency using matplotlib.
 
-The script then defines a function called "fit_line," which fits a line to the image using the centroid and the first derivative. This line is used to compute the angle of the edge that is being analyzed.
+The script then defines a function called *"fit_line,"* which fits a line to the image using the centroid and the first derivative. This line is used to compute the angle of the edge that is being analyzed.
 
-The next function defined is "compute_esf," which computes the Edge Spread Function (ESF) of the image using the line fit and the angle computed earlier. The function "get_lsf" is used to compute the Line Spread Function (LSF) from the ESF.
+The next function defined is *"compute_esf,"* which computes the Edge Spread Function (ESF) of the image using the line fit and the angle computed earlier. The function *"get_lsf"* is used to compute the Line Spread Function (LSF) from the ESF.
 
-The function "get_mtf" is used to compute the MTF from the LSF by taking the Fourier Transform of the LSF and normalizing it. The function "recenter" is used to recenter the LSF so that it is ready for the Fourier Transform.
+The function *"get_mtf"* is used to compute the MTF from the LSF by taking the Fourier Transform of the LSF and normalizing it. The function *"recenter"* is used to recenter the LSF so that it is ready for the Fourier Transform.
 
-The script then defines two more helper functions, "mtf50" and "mtf50p", which compute the MTF50 and MTF50P, respectively. MTF50 is the frequency where the MTF is 50% of its low frequency value, and MTF50P is the frequency where the MTF is 50% of its peak value. Both of these values are important in defining image sharpness.
+The script then defines two more helper functions, *"mtf50"* and *"mtf50p"*, which compute the MTF50 and MTF50P, respectively. MTF50 is the frequency where the MTF is 50% of its low frequency value, and MTF50P is the frequency where the MTF is 50% of its peak value. Both of these values are important in defining image sharpness.
 
 The script then loads an image and splits it into its Red, Green, Blue, and Luminance channels. For each channel, the script applies the previously defined functions in sequence to compute the MTF, MTF50, and MTF50P. The MTF is then plotted for each channel, and the MTF50 and MTF50P for the Luminance channel are displayed on the plot.
 
